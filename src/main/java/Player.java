@@ -1,7 +1,7 @@
 public class Player {
-    int playerPosX = 10;
-    int playerPosY = 10;
-    char player = 'P';
+    private int playerPosX = 10;
+    private int playerPosY = 10;
+    final char player = 'P';
 
     public int getPlayerPosX() {
         return playerPosX;

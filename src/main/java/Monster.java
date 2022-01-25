@@ -1,8 +1,8 @@
 
 public class Monster {
-    int monsterPosX;
-    int monsterPosY;
-    char monster = 'M';
+    private int monsterPosX;
+    private int monsterPosY;
+    final char monster = 'M';
 
     public int getMonsterPosX() {
         return monsterPosX;
