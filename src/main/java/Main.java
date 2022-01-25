@@ -3,6 +3,8 @@ import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Main {
@@ -19,6 +21,7 @@ public class Main {
         Random random = new Random();
         boolean continueReadingInput = true;
         boolean gameOver = false;
+        final char BLOCK = '\u2588';
         Character c = ' ';
         Player P = new Player();
         Monster M = new Monster();
@@ -30,6 +33,25 @@ public class Main {
         terminal.putCharacter(P.getPlayer());
         terminal.setCursorPosition(xMP, yMP);
         terminal.putCharacter(M.getMonster());
+
+
+        List<Walls> barriers = new ArrayList<>();
+        for (int i = 0; i <= 120; i++) {
+            barriers.add(new Walls(i, 0));
+        }
+        for (int i = 0; i <= 30; i++) {
+            barriers.add(new Walls(0, i));
+        }
+        for (int i = 0; i <= 120; i++) {
+            barriers.add(new Walls(i, 30));
+        }
+        for (int i = 0; i <= 30; i++) {
+            barriers.add(new Walls(120, i));
+        }
+        for (Walls block : barriers) {
+            terminal.setCursorPosition(block.getWallPosX(), block.getWallPosY());
+            terminal.putCharacter(BLOCK);
+        }
 
 
         while (continueReadingInput) {
